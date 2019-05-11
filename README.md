@@ -2,7 +2,7 @@
 Project to progress my understanding of Data Structures &amp; Algorithms
 
 ## Project Overview
-In this project, I completed five tasks based on a fabricated set of calls and texts exchanged during September 2016. I used Python to analyze and answer questions about the texts and calls contained in the dataset. Lastly, I performed run time analysis of your solution and determine its efficiency.
+In this project, I completed five tasks based on a fabricated set of calls and texts exchanged during September 2016. I used Python to analyze and answer questions about the texts and calls contained in the dataset. Lastly, I performed run time analysis of my solutions and determine its efficiency.
 
 ## About the data
 The text and call data are provided in csv files. In each file, the data is read and stored as lists of lists.
