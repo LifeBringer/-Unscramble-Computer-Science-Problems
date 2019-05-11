@@ -49,7 +49,8 @@ import re
 #Problem A start
 def get_problemthreeA(call_log):
     '''Takes call log and provides a list of unique numbers in lexilogical order'''
-    # List of area codes in Bangalore
+    
+    # List of area codes called by Bangalorians
     list_of_codes = []
 
     # Columns extracted
