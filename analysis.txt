@@ -1,0 +1,47 @@
+"""
+This is an analysis by the big O Notation for Problem Solutions 0-4
+
+Problem 0
+--------
+Run Time Complexity - O(1)
+Space Complexity - O(1)
+Higest Order - O(n)
+
+Has O(1) no matter how large the input for time as we are only checking the first and last call. We have O(1) complexity for space as input arguments can be infinitely large. All other lines in this program are O(1) as there is minimal processing happening as the values are fixed.
+
+Problem 1
+----------
+Run Time Complexity - O(n)
+Space Complexity - O(1)
+Highest Order - O(n)
+
+Has O(n) for calls * O(n) for texts which mean O(n^2) complexity for time or quadratic. For time specifically we go through 2 for loops, one iterating through calls and the other iterating through texts. For space we have O(n) as we are creating a single list from both inputs.
+
+Problem 2
+----------
+Run Time Complexity - O(n*log(n))
+Space Complexity - O(n)
+Highest Order - O(n)
+
+Largest complexity is (On) which is linear, there is a single for loops that iterates over each item in the call log, completing a single check.
+
+Problem 3
+---------
+Run Time Complexity - O(3n+nlogn)
+Space Complexity - O(nlogn)
+Higest Order - O(n)
+
+For Part A of the problem the complexity is O(3n) or linear for time and O(2n) for space. For time complexity, the first O(n) for iterating through each number, the second O(n) is for searching each input element for the right type of code and the third O(n) is for extracting the right code. For space complexity, the first O(n) is for the input and the second O(n) is for the list that has the relevant number. O(3n) is added to O(nlog(n)) for the sort that needs to happen in the end.
+
+For Part B of the problem the time and space complexity is both O(n) as every entry is processed once.
+
+Problem 4
+----------
+Run Time Complexity - O(3n+nlogn)
+Space Complexity -  O(nlogn)
+Higest Order - O(n)
+
+The complexity is O(3*n^2), the 3 is for the 3 loops that are iterated as each input is processed three times to develop a list of texters, a list of answering callers, and a list of final suspects of being telemarket calls. We are taking the two inputs, i.e. calls and texts, and comparing them. We must also add O(nlog(n)) for space complexity as we are sorting the list before output.
+
+
+"""
