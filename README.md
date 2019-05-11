@@ -1,4 +1,4 @@
-# Unscramble-Computer-Science-Problems
+# Unscramble Computer Science Problems
 Project to progress my understanding of Data Structures &amp; Algorithms
 
 ## Project Overview
