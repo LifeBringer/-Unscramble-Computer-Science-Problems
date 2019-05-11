@@ -18,6 +18,7 @@ How many different telephone numbers are there in the records?
 Print a message:
 "There are <count> different telephone numbers in the records."
 """
+
 def get_problemone(call_log, text_log):
     '''Takes in logs and outputs number of unique numbers.'''
     # Catalog of unique numbers
