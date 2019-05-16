@@ -14,15 +14,16 @@ with open('calls.csv', 'r') as f:
 
 """
 TASK 1:
-How many different telephone numbers are there in the records? 
+How many different telephone numbers are there in the records?
 Print a message:
 "There are <count> different telephone numbers in the records."
 """
 
+
 def get_problemone(call_log, text_log):
     '''Takes in logs and outputs number of unique numbers.'''
     # Catalog of unique numbers
-    catalog = []
+    catalog = set()
 
     # Columns extracted
     incoming_number, answering_number = 0, 1
@@ -33,24 +34,21 @@ def get_problemone(call_log, text_log):
 
     # Check Call log
     for entry in calls:
-        if entry[incoming_number] not in catalog:
-            catalog.append(entry[incoming_number])
-        if entry[answering_number] not in catalog:
-            catalog.append(entry[answering_number])
+        catalog.add(entry[incoming_number])
+        catalog.add(entry[answering_number])
 
     # Check Text log
     for entry in texts:
-        if entry[incoming_number] not in catalog:
-            catalog.append(entry[incoming_number])
-        if entry[answering_number] not in catalog:
-            catalog.append(entry[answering_number])
+        catalog.add(entry[incoming_number])
+        catalog.add(entry[answering_number])
 
     # Number of unique entries
     count = len(catalog)
 
     # Print Solution
-    print("There are {} different telephone numbers in the records.".format(count))
-    
+    print("There are {} different telephone numbers in the records.".format(
+        count))
+
     return 0
 
 
