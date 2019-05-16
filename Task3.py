@@ -2,6 +2,7 @@
 Read file into texts and calls.
 It's ok if you don't understand how to read files.
 """
+import re
 import csv
 
 with open('texts.csv', 'r') as f:
@@ -31,7 +32,8 @@ in Bangalore.
 Print the answer as part of a message:
 "The numbers called by people in Bangalore have codes:"
  <list of codes>
-The list of codes should be print out one per line in lexicographic order with no duplicates.
+The list of codes should be print out one per line in lexicographic order with
+no duplicates.
 
 Part B: What percentage of calls from fixed lines in Bangalore are made
 to fixed lines also in Bangalore? In other words, of all the calls made
@@ -44,12 +46,13 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
-import re
+# Problem A start
 
-#Problem A start
+
 def get_problemthreeA(call_log):
-    '''Takes call log and provides a list of unique numbers in lexilogical order'''
-    
+    '''Takes call log and provides a list of unique numbers in lexilogical
+        order'''
+
     # List of area codes called by Bangalorians
     list_of_codes = []
 
@@ -61,46 +64,48 @@ def get_problemthreeA(call_log):
 
     # Check Call log
     for entry in calls:
-      answering_areacode = get_areacode(entry[answering_number])
-      bangalore_caller = re.match(r"\(080\)", entry[incoming_number])
-      if answering_areacode not in list_of_codes and bangalore_caller:
-          list_of_codes.append(answering_areacode)
-    
+        answering_areacode = get_areacode(entry[answering_number])
+        bangalore_caller = re.match(r"\(080\)", entry[incoming_number])
+        if answering_areacode not in list_of_codes and bangalore_caller:
+            list_of_codes.append(answering_areacode)
+
     # Part A Output
     print("The numbers called by people in Bangalore have codes:")
     list_of_codes.sort()
     for area_code in list_of_codes:
-      print(area_code)
+        print(area_code)
 
     return -1
 
 
 def get_areacode(number):
-  '''Extracts Area Code from number provided'''
-  pattern = get_areacode_pattern(number)
-  assert pattern, "Not a number recognized!"
-  area_code = re.search(pattern, number).group(1)
-  return area_code
+    '''Extracts Area Code from number provided'''
+    pattern = get_areacode_pattern(number)
+    assert pattern, "Not a number recognized!"
+    area_code = re.search(pattern, number).group(1)
+    return area_code
 
 
 def get_areacode_pattern(number):
-  '''Checks numbers against known patterns and returns relevant pattern'''
-  fixedline_pattern = r"(\(0[0-9]*\))"
-  mobile_pattern = r"([7,8,9][0-9]+)( )"
-  telemarketer_pattern = r"(140)"
+    '''Checks numbers against known patterns and returns relevant pattern'''
+    fixedline_pattern = r"(\(0[0-9]*\))"
+    mobile_pattern = r"([7,8,9][0-9]+)( )"
+    telemarketer_pattern = r"(140)"
 
-  pattern_set = (fixedline_pattern, mobile_pattern, telemarketer_pattern)
+    pattern_set = (fixedline_pattern, mobile_pattern, telemarketer_pattern)
 
-  for pattern in pattern_set:
-    if re.match(pattern, number):
-      return pattern
+    for pattern in pattern_set:
+        if re.match(pattern, number):
+            return pattern
 
-  return None
+    return None
 
-### Problem B Start
+# Problem B Start
+
+
 def get_problemthreeB(call_log):
-    '''Takes call log and outputs percentage of Bangalore fixed lines calling Bangalore 
-    fixed lines versus all Bangalore fixed lines calls'''
+    '''Takes call log and outputs percentage of Bangalore fixed lines calling
+    Bangalore fixed lines versus all Bangalore fixed lines calls'''
     # Record the longest duration
     fixed_to_fixed = 0
     any_fixed = 0
@@ -113,20 +118,21 @@ def get_problemthreeB(call_log):
 
     # Check Call log
     for entry in calls:
-      incoming_from_banglore = re.match(r"\(080\)", entry[incoming_number])
-      answering_from_banglore = re.match(r"\(080\)", entry[answering_number])
-      
-      # Count scenarios of Banagalore calling others
-      if incoming_from_banglore and answering_from_banglore:
-        fixed_to_fixed += 1
-      elif incoming_from_banglore or answering_from_banglore:
-        any_fixed += 1
-  
+        incoming_from_banglore = re.match(r"\(080\)", entry[incoming_number])
+        answering_from_banglore = re.match(r"\(080\)", entry[answering_number])
+
+        # Count scenarios of Banagalore calling others
+        if incoming_from_banglore and answering_from_banglore:
+            fixed_to_fixed += 1
+        elif incoming_from_banglore:
+            any_fixed += 1
 
     # Part B Output
-    print("{:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(100.0*fixed_to_fixed/any_fixed))
+    print("{:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(
+        100.0*fixed_to_fixed/any_fixed))
 
     return -1
+
 
 # Process Problem 3
 get_problemthreeA(calls)
