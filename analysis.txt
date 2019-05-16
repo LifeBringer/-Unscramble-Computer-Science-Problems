@@ -11,19 +11,19 @@ Has O(1) no matter how large the input for time as we are only checking the firs
 
 Problem 1
 ----------
-Run Time Complexity - O(n)
+Run Time Complexity - O(n^2)
 Space Complexity - O(1)
 Highest Order - O(n)
 
-Has O(n) for calls * O(n) for texts which mean O(n^2) complexity for time or quadratic. For time specifically we go through 2 for loops, one iterating through calls and the other iterating through texts. For space we have O(n) as we are creating a single list from both inputs.
+Has O(n + m) for calls and for texts which simplifies to O(n) complexity. For time specifically we go through 2 in statements checking within the logs, one iterating through calls and the other iterating through texts causing a time complexity of O(n^2). For space we have O(n) as we are creating a single list from both inputs.
 
 Problem 2
 ----------
-Run Time Complexity - O(n*log(n))
+Run Time Complexity - O(n^2)
 Space Complexity - O(n)
 Highest Order - O(n)
 
-Largest complexity is (On) which is linear, there is a single for loops that iterates over each item in the call log, completing a single check.
+Largest complexity is (On) which is linear, there is two 'in' statements that iterates over each item in the call log for both incoming and outgoing calls, completing a quadratic check of O(n^2).
 
 Problem 3
 ---------
