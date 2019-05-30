@@ -89,7 +89,7 @@ def get_areacode(number):
 def get_areacode_pattern(number):
     '''Checks numbers against known patterns and returns relevant pattern'''
     fixedline_pattern = r"(\(0[0-9]*\))"
-    mobile_pattern = r"([7,8,9][0-9]+)( )"
+    mobile_pattern = r"([7,8,9][0-9]{3})"
     telemarketer_pattern = r"(140)"
 
     pattern_set = (fixedline_pattern, mobile_pattern, telemarketer_pattern)
@@ -124,7 +124,7 @@ def get_problemthreeB(call_log):
         # Count scenarios of Banagalore calling others
         if incoming_from_banglore and answering_from_banglore:
             fixed_to_fixed += 1
-        elif incoming_from_banglore:
+        if incoming_from_banglore:
             any_fixed += 1
 
     # Part B Output
